@@ -146,7 +146,7 @@ impl Driver {
 
         // Block waiting for an event to happen, peeling out how many events
         // happened.
-        match self.poll.poll(events, Some(Duration::from_millis(100))) {
+        match self.poll.poll(events, Some(Duration::from_millis(1))) {
             Ok(()) => {}
             Err(ref e) if e.kind() == io::ErrorKind::Interrupted => {}
             #[cfg(target_os = "wasi")]
